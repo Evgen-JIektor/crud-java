@@ -1,11 +1,13 @@
 package com.example.javacrud.models;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
+@Data
 @Entity
 public class Car {
 
@@ -28,7 +30,13 @@ public class Car {
         this.countDoor = countDoor;
     }
 
-
+    public Car(Integer vinNumber, String brand, String models, String color, Integer countDoor) {
+        this.vinNumber = vinNumber;
+        this.brand = brand;
+        this.models = models;
+        this.color = color;
+        this.countDoor = countDoor;
+    }
 
     public Car(Integer vinNumber, String brand, String models) {
         this.brand = brand;

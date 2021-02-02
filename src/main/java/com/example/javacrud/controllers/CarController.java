@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class CarController {
@@ -29,15 +28,32 @@ public class CarController {
         model.addAttribute("cars", cars);
         return "allCar";
     }
-    @GetMapping("/CarAdd")
+    @GetMapping("/carAdd")
     public String AddCarForm(Model model) {
-        List<Car> cars = carService.findAll();
-        model.addAttribute("cars", cars);
-        return "CarAdd";
+        return "carAdd";
     }
 
-    @PostMapping("/CarAdd")
+    @PostMapping("/carAdd")
     public String AddCar(Car car){
+        carService.saveCar(car);
+        return "redirect:/car";
+    }
+
+    @GetMapping("/carDelete/{id}")
+    public String deleteCar(@PathVariable("id") Long id){
+        carService.deleteById(id);
+        return "redirect:/car";
+    }
+
+    @GetMapping("/carUpdate/{id}")
+    public String updateCarForm(@PathVariable("id") Long id, Model model){
+        Car car = carService.finById(id);
+        model.addAttribute("car", car);
+        return "/carUpdate";
+    }
+
+    @PostMapping("/carUpdate")
+    public String updateCar(Car car){
         carService.saveCar(car);
         return "redirect:/car";
     }

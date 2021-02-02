@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/carAdd}" th:object="${car}" method="post">
+
+    <input type="text" name="vinNumber" placeholder="Введите vin номер" />
+
+    <input type="text" name="brand" placeholder="Введите Бренд" />
+
+    <input type="text" name="models" placeholder="Введите Марку" />
+
+    <input type="text" name="color" placeholder="Введите цвет" />
+
+    <input type="text" name="countDoor" placeholder="Введите кол-во дверей" />
+
+<!--
+    <label for="vinNumber">vinNumber</label>
+    <input type="text" th:field="*{vinNumber}" id="vinNumber" placeholder="vinNumber" />
+
+    <label for="brand">brand</label>
+    <input type="text" th:field="*{brand}" id="brand" placeholder="brand" />
+
+    <label for="models">models</label>
+    <input type="text" th:field="*{models}" id="models" placeholder="models" />
+
+    <label for="color">color</label>
+    <input type="text" th:field="*{color}" id="color" placeholder="color" />
+
+    <label for="countDoor">countDoor</label>
+    <input type="text" th:field="*{countDoor}" id="countDoor" placeholder="countDoor" /> -->
+
+    <button type="submit">Добавить</button>
+</form>
+
+</body>
+</html>

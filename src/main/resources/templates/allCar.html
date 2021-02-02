@@ -18,11 +18,14 @@
               <span>Models</span>
               <span th:text="${car.getModels}">models car</span>
 
+              <a th:href="@{carUpdate/{id}(id=${car.id})}">Изменить</a>
+              <a th:href="@{carDelete/{id}(id=${car.id})}">Удалить</a>
+
           </div>
       </div>
 
 <div>
-    <a href="/CarAdd">Добавление авто</a>
+    <a href="/carAdd">Добавление авто</a>
 </div>
   </body>
   </html>
