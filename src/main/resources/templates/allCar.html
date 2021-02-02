@@ -6,28 +6,23 @@
 </head>
 <body>
 
-<form method="post">
-    <!--   <label id="vinNumber">Vin номер авто</label> -->
-    <input type="text" name="vinNumber" placeholder="Введите vin номер" />
-    <!--    <label id="brand">Производитель</label> -->
-    <input type="text" name="brand" placeholder="Введите Бренд" />
-    <!--    <label id="modelss">Марка</label> -->
-    <input type="text" name="modelss" placeholder="Введите Марку" />
-    <button type="submit">Добавить</button>
-  </form>
-
   <h3>Список всех транспортных средств</h3>
       <div th:each="car : ${cars}">
           <div>
               <span>Vin</span>
-              <a th:text="${car.getVinNumber}">vin car</a>
+              <a th:href="@{/{id}(id=${car.getId()})}" th:text="${car.getVinNumber}">vin car</a>
 
               <span>Brand</span>
-              <a th:text="${car.getBrand}">vin car</a>
+              <span th:text="${car.getBrand}">brand car</span>
 
-              <span>Modelss</span>
-              <a th:text="${car.getModelss}">vin car</a>
+              <span>Models</span>
+              <span th:text="${car.getModels}">models car</span>
+
           </div>
       </div>
+
+<div>
+    <a href="/CarAdd">Добавление авто</a>
+</div>
   </body>
   </html>

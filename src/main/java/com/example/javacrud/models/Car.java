@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class Car {
 
@@ -14,24 +15,24 @@ public class Car {
 
     private Integer vinNumber;
     private String brand;
-    private String modelss;
+    private String models;
     private String color;
     private Integer countDoor;
 
-    public Car(Long id, Integer vinNumber, String brand, String modelss, String color, Integer countDoor) {
+    public Car(Long id, Integer vinNumber, String brand, String models, String color, Integer countDoor) {
         this.id = id;
         this.vinNumber = vinNumber;
         this.brand = brand;
-        this.modelss = modelss;
+        this.models = models;
         this.color = color;
         this.countDoor = countDoor;
     }
 
 
 
-    public Car(Integer vinNumber, String brand, String modelss) {
+    public Car(Integer vinNumber, String brand, String models) {
         this.brand = brand;
-        this.modelss = modelss;
+        this.models = models;
         this.vinNumber = vinNumber;
     }
 
@@ -54,12 +55,12 @@ public class Car {
         this.brand = brand;
     }
 
-    public String getModelss() {
-        return modelss;
+    public String getModels() {
+        return models;
     }
 
-    public void setModelss(String modelss) {
-        this.modelss = modelss;
+    public void setModels(String models) {
+        this.models = models;
     }
 
     public String getColor() {

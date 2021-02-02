@@ -1,45 +1,46 @@
 package com.example.javacrud.controllers;
 
 import com.example.javacrud.models.Car;
-import com.example.javacrud.repository.CarRepository;
+import com.example.javacrud.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Map;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class CarController {
 
+    private final CarService carService;
+
     @Autowired
-    private CarRepository carRepository;
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
     @GetMapping("/car")
-    public String main() {
-        return "showCar";
-    }
-
-    @GetMapping
-    public String showCar(Model model){
-        Iterable<Car> cars = carRepository.findAll();
+    public String findAll(Model model) {
+        List<Car> cars = carService.findAll();
         model.addAttribute("cars", cars);
         return "allCar";
     }
-    @PostMapping
-    public String add(@RequestParam (value = "vinNumber", required = false) Integer vinNumber,
-                      @RequestParam ("brand") String brand,
-                      @RequestParam ("modelss") String modelss,
-                      Model model){
-        Car car = new Car(vinNumber, brand, modelss);
-        carRepository.save(car);
-        Iterable<Car> cars = carRepository.findAll();
+    @GetMapping("/CarAdd")
+    public String AddCarForm(Model model) {
+        List<Car> cars = carService.findAll();
         model.addAttribute("cars", cars);
-
-        return "allCar";
+        return "CarAdd";
     }
+
+    @PostMapping("/CarAdd")
+    public String AddCar(Car car){
+        carService.saveCar(car);
+        return "redirect:/car";
+    }
+
 
 }

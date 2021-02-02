@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>Машина</title>
 </head>
-<body><!--
-<div th:each="car : ${car}">
+<body>
+<div th:each="car : ${cars}">
     <p th:="${car.getVinNumber()}">car</p>
     <p th:="${car.getBrand()}">car</p>
-    <p th:="${car.getModelss()}">car</p>
+    <p th:="${car.getModels()}">car</p>
     <p th:="${car.getColor()}">car</p>
     <p th:="${car.getCountDoor()}">car</p>
-    <p th:="${car.getId()}">car</p> -->
+    <p th:="${car.getId()}">car</p>
 </div>
 </body>
 </html>
